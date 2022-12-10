@@ -32,14 +32,6 @@ namespace SpecFlowProject2.StepDefinitions
         [Then(@"the result should be ""([^""]*)""")]
         public void ThenTheResultShouldBe(string str)
         {
-            string abc = "high";
-            // Console.WriteLine("99input", str);
-            // Console.WriteLine("get", (BPCalculator.Category).ToString());
-            if (str.Equals((BPCalculator.Category).ToString())) { Console.Write("1"); } else { Console.Write("0"); }
-            Console.WriteLine($"{str}");
-            Console.WriteLine($"{(BPCalculator.Category).ToString()}");
-            Console.WriteLine($"{str.Equals((BPCalculator.Category).ToString())}");
-            Console.WriteLine($"{str.Equals(abc)}");
             Assert.Equal(str, BPCalculator.Category.ToString());
         }
     }
