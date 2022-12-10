@@ -9,8 +9,7 @@ namespace BPCalculator
         [Display(Name="Low Blood Pressure")] Low,
         [Display(Name="Ideal Blood Pressure")]  Ideal,
         [Display(Name="Pre-High Blood Pressure")] PreHigh,
-        [Display(Name ="High Blood Pressure")]  High ,
-        [Display(Name = "Out of Range")] OOR
+        [Display(Name ="High Blood Pressure")]  High 
     };
 
     public class BloodPressure
@@ -30,39 +29,33 @@ namespace BPCalculator
         public BPCategory Category
         {
             get
-            {
-                if (Systolic < Diastolic) {                
-                    return BPCategory.OOR;
+            { 
+                if ((Systolic >= 70 && Systolic < 90) && (Diastolic >= 40 && Diastolic < 60))
+                {
+                    return BPCategory.Low;
                 }
                 else
                 {
-                    if ((Systolic >= 70 && Systolic < 90) && (Diastolic >= 40 && Diastolic < 60))
+                    if ((Systolic >= 70 && Systolic < 120) && (Diastolic >= 40 && Diastolic < 80))
                     {
-                        return BPCategory.Low;
+                        return BPCategory.Ideal;
                     }
                     else
                     {
-                        if ((Systolic >= 70 && Systolic < 120) && (Diastolic >= 40 && Diastolic < 80))
+                        if ((Systolic >= 70 && Systolic < 140) && (Diastolic >= 40 && Diastolic < 90))
                         {
-                            return BPCategory.Ideal;
+                            return BPCategory.PreHigh;
                         }
                         else
                         {
-                            if ((Systolic >= 70 && Systolic < 140) && (Diastolic >= 40 && Diastolic < 90))
+                            if ((Systolic >= 70 && Systolic <= 190) && (Diastolic >= 40 && Diastolic <= 100))
                             {
-                                return BPCategory.PreHigh;
-                            }
-                            else
-                            {
-                                if ((Systolic >= 70 && Systolic <= 190) && (Diastolic >= 40 && Diastolic <= 100))
-                                {
-                                    return BPCategory.High;
-                                }
+                                return BPCategory.High;
                             }
                         }
                     }
                 }
-                return BPCategory.OOR;
+                return 0;
             }                      
         }        
     }
