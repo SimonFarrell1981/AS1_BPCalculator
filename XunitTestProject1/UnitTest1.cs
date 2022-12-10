@@ -22,33 +22,50 @@ namespace XunitTestProject1
             //Assert
             Assert.Equal(BPCategory.Low, BPCalculator.Category);
         }
-        public void Test1()
+        [Fact]
+        public void IdealTest()
         {
             //Arrange
             var BPCalculator = new BloodPressure();
             //Act
-            BPCalculator.Diastolic = 1;
-            BPCalculator.Systolic = 1;
+            BPCalculator.Diastolic = 60;
+            BPCalculator.Systolic = 90;
+            //Assert
+            Assert.Equal(BPCategory.Ideal, BPCalculator.Category);
+            //Act
+            BPCalculator.Diastolic = 70;
+            BPCalculator.Systolic = 110;
+            //Assert
+            Assert.Equal(BPCategory.Ideal, BPCalculator.Category);
+        }
+        [Fact]
+        public void PreHighTest()
+        {
+            //Arrange
+            var BPCalculator = new BloodPressure();
+            //Act
+            BPCalculator.Diastolic = 80;
+            BPCalculator.Systolic = 120;
+            //Assert
+            Assert.Equal(BPCategory.PreHigh, BPCalculator.Category);
+            //Act
+            BPCalculator.Diastolic = 85;
+            BPCalculator.Systolic = 130;
+            //Assert
+            Assert.Equal(BPCategory.PreHigh, BPCalculator.Category);
+        }
+        [Fact]
+        public void HighTest()
+        {
+            //Arrange
+            var BPCalculator = new BloodPressure();
+            //Act
+            BPCalculator.Diastolic = 90;
+            BPCalculator.Systolic = 140;
             //Assert
             Assert.Equal(BPCategory.High, BPCalculator.Category);
-        }
-        public void Test2()
-        {
-            //Arrange
-            var BPCalculator = new BloodPressure();
-            //Act
-            BPCalculator.Diastolic = 1;
-            BPCalculator.Systolic = 1;
-            //Assert
-            Assert.Equal(BPCategory.High, BPCalculator.Category);
-        }
-        public void Test3()
-        {
-            //Arrange
-            var BPCalculator = new BloodPressure();
-            //Act
-            BPCalculator.Diastolic = 1;
-            BPCalculator.Systolic = 1;
+            BPCalculator.Diastolic = 100;
+            BPCalculator.Systolic = 190;
             //Assert
             Assert.Equal(BPCategory.High, BPCalculator.Category);
         }
