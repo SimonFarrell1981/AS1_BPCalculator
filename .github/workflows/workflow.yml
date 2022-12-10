@@ -32,3 +32,16 @@ jobs:
        # run Specflow+ tests
     - name: Run Acceptance Tests 
       run: dotnet test SpecFlowProject_net31/SpecFlowProject_net31.csproj  --verbosity normal -l:trx
+      
+    - name: Analyze code with SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        projectBaseDir: .
+        args: >
+          -Dsonar.organization=simonfarrell1981
+          -Dsonar.projectKey=SimonFarrell1981_AS1_BPCalculator
+          -Dsonar.python.coverage.reportPaths=coverage.xml
+          -Dsonar.verbose=true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
