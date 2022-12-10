@@ -28,3 +28,7 @@ jobs:
        # run standard unit tests
     - name: Run Unit Tests
       run: dotnet test XunitTestProject1/XunitTestProject1.csproj  --verbosity normal -l:trx
+      
+       # run Specflow+ tests
+    - name: Run Acceptance Tests 
+      run: dotnet test SpecFlowProject_net31/SpecFlowProject_net31.csproj  --verbosity normal -l:trx
