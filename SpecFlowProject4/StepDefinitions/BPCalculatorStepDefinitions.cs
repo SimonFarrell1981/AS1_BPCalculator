@@ -6,6 +6,7 @@ namespace SpecFlowProject4.StepDefinitions
     [Binding]
     public class BPCalculatorStepDefinitions
     {
+        
         [Given(@"the diastolic value is (.*)")]
         public void GivenTheDiastolicValueIs(int p0)
         {
@@ -29,6 +30,7 @@ namespace SpecFlowProject4.StepDefinitions
         {
             //throw new PendingStepException();
             Console.WriteLine("Result", low);
+           
         }
     }
 }

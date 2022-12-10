@@ -18,5 +18,3 @@ Scenario: Check for low blood pressure
 	| 85              | 130            | "PreHigh"               |
 	| 90              | 140            | "High"                  |
 	| 100             | 190            | "High"                  |
-
-

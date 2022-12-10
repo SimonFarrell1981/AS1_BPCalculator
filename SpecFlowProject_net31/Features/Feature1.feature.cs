@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowProject3.Features
+namespace SpecFlowProject_net31.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,39 +19,41 @@ namespace SpecFlowProject3.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("BPCalculator")]
-    public partial class BPCalculatorFeature
+    public partial class BPCalculatorFeature : object, Xunit.IClassFixture<BPCalculatorFeature.FixtureData>, System.IDisposable
     {
         
-        private TechTalk.SpecFlow.ITestRunner testRunner;
+        private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
+        
+        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "Feature1.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
-        public virtual void FeatureSetup()
+        public BPCalculatorFeature(BPCalculatorFeature.FixtureData fixtureData, SpecFlowProject_net31_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        {
+            this._testOutputHelper = testOutputHelper;
+            this.TestInitialize();
+        }
+        
+        public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "BPCalculator", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [NUnit.Framework.TearDownAttribute()]
         public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -60,7 +62,7 @@ namespace SpecFlowProject3.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
         public virtual void ScenarioStart()
@@ -73,17 +75,23 @@ namespace SpecFlowProject3.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check for low blood pressure")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("40", "70", "\"Low\"", null)]
-        [NUnit.Framework.TestCaseAttribute("50", "80", "\"Low\"", null)]
-        [NUnit.Framework.TestCaseAttribute("60", "90", "\"Ideal\"", null)]
-        [NUnit.Framework.TestCaseAttribute("70", "110", "\"Ideal\"", null)]
-        [NUnit.Framework.TestCaseAttribute("80", "120", "\"PreHigh\"", null)]
-        [NUnit.Framework.TestCaseAttribute("85", "130", "\"PreHigh\"", null)]
-        [NUnit.Framework.TestCaseAttribute("90", "140", "\"High\"", null)]
-        [NUnit.Framework.TestCaseAttribute("100", "190", "\"High\"", null)]
+        void System.IDisposable.Dispose()
+        {
+            this.TestTearDown();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Check for low blood pressure")]
+        [Xunit.TraitAttribute("FeatureTitle", "BPCalculator")]
+        [Xunit.TraitAttribute("Description", "Check for low blood pressure")]
+        [Xunit.TraitAttribute("Category", "tag1")]
+        [Xunit.InlineDataAttribute("40", "70", "\"Low\"", new string[0])]
+        [Xunit.InlineDataAttribute("50", "80", "\"Low\"", new string[0])]
+        [Xunit.InlineDataAttribute("60", "90", "\"Ideal\"", new string[0])]
+        [Xunit.InlineDataAttribute("70", "110", "\"Ideal\"", new string[0])]
+        [Xunit.InlineDataAttribute("80", "120", "\"PreHigh\"", new string[0])]
+        [Xunit.InlineDataAttribute("85", "130", "\"PreHigh\"", new string[0])]
+        [Xunit.InlineDataAttribute("90", "140", "\"High\"", new string[0])]
+        [Xunit.InlineDataAttribute("100", "190", "\"High\"", new string[0])]
         public virtual void CheckForLowBloodPressure(string diastolic_Value, string systolic_Value, string blood_Pressure_Catagory, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -132,6 +140,22 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
+        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        public class FixtureData : System.IDisposable
+        {
+            
+            public FixtureData()
+            {
+                BPCalculatorFeature.FeatureSetup();
+            }
+            
+            void System.IDisposable.Dispose()
+            {
+                BPCalculatorFeature.FeatureTearDown();
+            }
         }
     }
 }
