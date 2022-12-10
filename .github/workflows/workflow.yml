@@ -1,0 +1,28 @@
+name: build and package
+
+on:
+  workflow_dispatch:                                # manually triggered
+
+jobs:
+  build_package:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Install dependencies
+      run: dotnet restore BPCalculator/
+
+    - name: Build for release
+      run: dotnet build BPCalculator/BPCalculator.csproj --configuration Release --no-restore 
+      
+       # run standard unit tests
+    - name: Run Unit Tests
+      run: dotnet test XunitTestProject1/XunitTestProject1.csproj  --verbosity normal -l:trx
