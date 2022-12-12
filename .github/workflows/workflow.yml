@@ -48,7 +48,7 @@ jobs:
       uses: dependency-check/Dependency-Check_Action@main
       id: Depcheck
       with:
-          project: 'BMI'
+          project: 'BP-Calculator'
           path: '.'
           format: 'HTML'    
           args: >
