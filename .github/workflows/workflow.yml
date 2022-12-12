@@ -64,7 +64,7 @@ jobs:
            path: ${{github.workspace}}/reports
            
   CD:                                             
-    name: deploy to staging slot, run E2E tests, swap slots
+    name: CD
     needs: CI
     environment:
       name: QA
