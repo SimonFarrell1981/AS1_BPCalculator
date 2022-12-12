@@ -88,16 +88,6 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }}     # Define secret variable in environment
         slot-name: development
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
-        # Run Selenium tests
-    - name: Run Selenium tests
-      run: dotnet test ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp/SeleniumTest.dll /Settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
-  
-    # Upload results of selenium tests
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Selenium Tests Results
-        path: TestResults/selenium.trx
-
     # login to Azure account
     - uses: azure/login@v1
       with:
@@ -106,6 +96,18 @@ jobs:
     # blue/green
     - name: swap QA and production slots
       run: |
-        az webapp deployment slot swap -n gc-bmicalculator-ga -g gcresourcegroup1 --slot staging --target-slot production 
+        az webapp deployment slot swap -n BPCalculator20221210142544 -g appservice-rg --slot development --target-slot production
+        
+         k6_load_test:
 
+    #   k6 test
+    - name: Pull Docker image for k6
+      run: docker pull loadimpact/k6
 
+    - name: Run k6 load test, capture report
+      run: docker run -i loadimpact/k6 run - <k6tests/perf2.js > k6report.txt
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: k6report
+        path: k6report.txt
