@@ -97,8 +97,6 @@ jobs:
     - name: swap QA and production slots
       run: |
         az webapp deployment slot swap -n BPCalculator20221210142544 -g appservice-rg --slot development --target-slot production
-        
-         k6_load_test:
 
     #   k6 test
     - name: Pull Docker image for k6
