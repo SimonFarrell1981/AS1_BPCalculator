@@ -62,4 +62,4 @@ jobs:
     # blue/green
     - name: swap QA and production slots
       run: |
-        az webapp deployment slot swap -n gc-bmicalculator-ga -g gcresourcegroup1 --slot staging --target-slot production 
+        az webapp deployment slot swap -n BPCalculator20221210142544 -g appservice-rg --slot development --target-slot production 
